@@ -35,7 +35,9 @@ Start it
 ### Available Endpoints: 
 - artist
 - playlist
+- search
 
 ### Example:
 - http://yma-server.herokuapp.com/artist/eminem (returns details for Eminem).
 - http://yma-server.herokuapp.com/playlist/RDCLAK5uy_l3aBsRkpGKTFr2oQl4PsxfWm0bzJZUTZU (returns details for playlist of top songs of 2021).
+- http://yma-server.herokuapp.com/search/break%20ya%20neck%20 (returns details from Youtube Music search for song Break Ya Neck - Busta Rhymes).
