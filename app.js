@@ -26,6 +26,25 @@ app.get("/playlist/:playlistId", async (req, res) => {
   res.send(data);
 });
 
+app.get("/search/:query", async (req, res) => {
+  const query = req.params.query;
+
+  let top = await api.search(query);
+  let songs = await api.search(query, { filter: "songs" });
+  let albums = await api.search(query, { filter: "albums" });
+
+  let artistName = songs[0].artist_browse_id;
+
+  let album = [await albums[0], await albums[1], await albums[2]];
+  let artist = await api.getArtist(artistName);
+  let finalArtist = Object.assign(artist, { id: artistName });
+  let topResult = await top[0];
+
+  let data = [songs, album, finalArtist, topResult];
+
+  res.send(data);
+});
+
 app.get("/hello", async (req, res) => {
   const test = "test";
   res.send(test);
